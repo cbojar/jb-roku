@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<opml version="1.0">
+<body
+	backgroundColor="#444444"
+	leftBreadcrumbColor="#00EE00"
+	rightBreadcrumbColor="#0000EE"
+	posterScreenTitleColor="#EEEE00"
+	posterScreenSubtitleColor="#00EE00"
+	posterScreenSynopsisColor="#EEEEEE"
+	springboardScreenTitleColor="#00EE00"
+	springboardScreenSynopsisColor="#EEEEEE"
+	springboardScreenActorColor="#EEEE00"
+	springboardScreenDirectorColor="#EEEE00"
+	springboardScreenDateColor="#EEEE00">
+	<outline title="Barely Digital" subtitle="powered by NextNewNetworks.com" img="http://images.nextnewnetworks.com/20fef47ab57507cbba4ac8dd9d54ba1e.jpg" url="http://www.barelydigital.com/mrss" />
+	<outline title="Loaded" subtitle="powered by CNET.com" img="http://www.cnet.com/i/pod/images/podcastsHD_loaded_300x300.jpg" url="http://loadedhdpodcast.cnettv.com" />
+</body>
+</opml>
