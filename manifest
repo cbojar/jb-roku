@@ -1,9 +1,9 @@
-title=MRSS Template
-subtitle=A starter channel for playing video content from MRSS feeds
+title=Jupiter Broadcasting
+subtitle=Independent entertainment, on demand
 mm_icon_focus_hd=pkg:/images/mm_icon_focus_hd.png
 mm_icon_side_hd=pkg:/images/mm_icon_side_hd.png
 mm_icon_focus_sd=pkg:/images/mm_icon_focus_sd.png
 mm_icon_side_sd=pkg:/images/mm_icon_side_sd.png
-major_version=1
-minor_version=0
-build_version=101105
+major_version=0
+minor_version=1
+build_version=120228

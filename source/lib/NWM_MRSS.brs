@@ -37,10 +37,10 @@ function NWM_MRSS_GetEpisodes(limit = 0)
 	if xml.Parse(raw)
 		for each item in xml.channel.item
 			newItem = {
-				streams:			[]
+				streams:	[]
 				streamFormat:	"mp4"
-				actors:				[]
-				categories:		[]
+				actors:		[]
+				categories:	[]
 				contentType:	"episode"
 			}
 			
@@ -68,10 +68,18 @@ function NWM_MRSS_GetEpisodes(limit = 0)
 
 			' thumbnail
 			tmp = item.GetNamedElements("media:thumbnail")
+			'if tmp.Count() > 0
+			'	newItem.sdPosterURL = ValidStr(tmp[0]@url)
+			'	newItem.hdPosterURL = ValidStr(tmp[0]@url)
+			'else if xml.channel.image.url.Count() > 0
+			'	newItem.sdPosterURL = ValidStr(xml.channel.image.url.GetText())
+			'	newItem.hdPosterURL = ValidStr(xml.channel.image.url.GetText())
+			'end if
 			if tmp.Count() > 0
-				newItem.sdPosterURL = ValidStr(tmp[0]@url)
-				newItem.hdPosterURL = ValidStr(tmp[0]@url)
-			else if xml.channel.image.url.Count() > 0
+				newItem.sdPosterURL_hq = ValidStr(tmp[0]@url)
+				newItem.hdPosterURL_hq = ValidStr(tmp[0]@url)
+			end if
+			if xml.channel.image.url.Count() > 0
 				newItem.sdPosterURL = ValidStr(xml.channel.image.url.GetText())
 				newItem.hdPosterURL = ValidStr(xml.channel.image.url.GetText())
 			end if

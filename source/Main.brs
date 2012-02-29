@@ -1,66 +1,80 @@
 sub Main()
+	LoadTheme()
 	categories = LoadConfig()
 	
 	if categories.Count() > 1
-		ShowPosterScreen(categories, "MRSS", "Template")
+		ShowPosterScreen( categories )
 	else
-		ShowEpisodeScreen(categories[0], categories[0].shortDescriptionLine1, "")
+		ShowEpisodeScreen( categories[0] )
 	end if
+end sub
+
+sub LoadTheme()
+	app = CreateObject( "roAppManager" )
+	theme = CreateObject( "roAssociativeArray" )
+	theme.OverhangSliceSD = "pkg:/images/Overhang_Slice_SD.png"
+	theme.OverhangSliceHD = "pkg:/images/Overhang_Slice_HD.png"
+	theme.OverhanglogoHD = "pkg:/images/Logo_Overhang_JB_HD.png"
+	theme.OverhanglogoSD = "pkg:/images/Logo_Overhang_JB_SD.png"
+
+	theme.OverhangPrimaryLogoOffsetHD_X = "60"
+	theme.OverhangPrimaryLogoOffsetHD_Y = "40"
+
+	theme.OverhangPrimaryLogoOffsetSD_X = "60"
+	theme.OverhangPrimaryLogoOffsetSD_Y = "40"
+
+	backgroundColor = "#F0F0F0"
+	primaryTextColor = "#333333"
+	secondaryTextColor = "#666666"
+	tertiaryTextColor = "#999999"
+
+	theme.backgroundColor = ValidStr( backgroundColor )
+	theme.breadcrumbTextLeft = ValidStr( primaryTextColor )
+	theme.breadcrumbDelimiter = ValidStr( primaryTextColor )
+	theme.breadcrumbTextRight = ValidStr( primaryTextColor )
+
+	theme.posterScreenLine1Text = ValidStr( primaryTextColor )
+	theme.posterScreenLine2Text = ValidStr( secondaryTextColor )
+	theme.episodeSynopsisText = ValidStr( secondaryTextColor )
+
+	theme.springboardTitleText = ValidStr( primaryTextColor )
+	theme.springboardSynopsisColor = ValidStr( secondaryTextColor )
+	theme.springboardRuntimeColor = ValidStr( tertiaryTextColor )
+	theme.springboardDirectorColor = ValidStr( tertiaryTextColor )
+	theme.springboardDirectorLabelColor = ValidStr( tertiaryTextColor )
+	theme.springboardActorColor = ValidStr( tertiaryTextColor )
+
+	app.SetTheme( theme )
 end sub
 
 function LoadConfig()
 	result = []
 
-	app = CreateObject("roAppManager")
-	theme = CreateObject("roAssociativeArray")
-	theme.OverhangSliceSD = "pkg:/images/Overhang_BackgroundSlice_Blue_SD43.png"
-	theme.OverhangSliceHD = "pkg:/images/Overhang_BackgroundSlice_Blue_HD.png"
-	theme.OverhanglogoHD = "pkg:/images/Logo_Overhang_Roku_SDK_HD.png"
-	theme.OverhanglogoSD = "pkg:/images/Logo_Overhang_Roku_SDK_SD43.png"
+	result.push( GetLiveStream() )
 
-	theme.OverhangPrimaryLogoOffsetHD_X = "100"
-	theme.OverhangPrimaryLogoOffsetHD_Y = "60"
-
-	theme.OverhangPrimaryLogoOffsetSD_X = "60"
-	theme.OverhangPrimaryLogoOffsetSD_Y = "40"
-
-	raw = ReadASCIIFile("pkg:/config.opml")
+	'raw = ReadASCIIFile("pkg:/config.opml")
+	raw = NWM_UT_GetStringFromURL( "http://cbojar.net/roku/jb/opml.xml" )
 	opml = CreateObject("roXMLElement")
 	if opml.Parse(raw)
-		theme.backgroundColor = ValidStr(opml.body@backgroundColor)
-		theme.breadcrumbTextLeft = ValidStr(opml.body@leftBreadcrumbColor)
-		theme.breadcrumbDelimiter = ValidStr(opml.body@rightBreadcrumbColor)
-		theme.breadcrumbTextRight = ValidStr(opml.body@rightBreadcrumbColor)
-		
-		theme.posterScreenLine1Text = ValidStr(opml.body@posterScreenTitleColor)
-		theme.posterScreenLine2Text = ValidStr(opml.body@posterScreenSubtitleColor)
-		theme.episodeSynopsisText = ValidStr(opml.body@posterScreenSynopsisColor)
-		
-		theme.springboardTitleText = ValidStr(opml.body@springboardScreenTitleColor)
-		theme.springboardSynopsisColor = ValidStr(opml.body@springboardScreenSynopsisColor)
-		theme.springboardRuntimeColor = ValidStr(opml.body@springboardScreenDateColor)
-		theme.springboardDirectorColor = ValidStr(opml.body@springboardScreenDirectorColor)
-		theme.springboardDirectorLabelColor = ValidStr(opml.body@springboardScreenDirectorColor)
-		theme.springboardActorColor = ValidStr(opml.body@springboardScreenActorColor)
-
 		for each category in opml.body.outline
 			result.Push(BuildCategory(category))
 		next
 	end if
 
-	app.SetTheme(theme)
-	
+	result.push( GetLicense() )
+
 	return result
 end function
 
 function BuildCategory(category)
 	result = {
+		title:			ValidStr(category@title)
 		shortDescriptionLine1:	ValidStr(category@title)
 		shortDescriptionLine2:	ValidStr(category@subtitle)
-		sdPosterURL:						ValidStr(category@img)
-		hdPosterURL:						ValidStr(category@img)
-		url:										ValidStr(category@url)
-		categories:							[]
+		sdPosterURL:		ValidStr(category@img)
+		hdPosterURL:		ValidStr(category@img)
+		url:			ValidStr(category@url)
+		categories:		[]
 	}
 	
 	if category.outline.Count() > 0
@@ -69,5 +83,40 @@ function BuildCategory(category)
 		next
 	end if
 	
+	return result
+end function
+
+function GetLiveStream()
+	result = {
+		screenTarget:		"video"
+		title:			"Live Stream"
+		shortDescriptionLine1:	"Live Stream"
+		shortDescriptionLine2:	"Watch Jupiter Broadcasting Live!"
+		sdPosterURL:		"pkg:/images/mm_icon_focus_sd.png"
+		hdPosterURL:		"pkg:/images/mm_icon_focus_hd.png"
+		streamurls:		["http://videocdn-us.geocdn.scaleengine.net:1935/jblive/live/jblive.stream/playlist.m3u8"]
+		streamformat:		"hls"
+		streamqualities:	["HD"]
+		streambitrates:		[0]
+		categories:		[]
+	}
+
+	return result
+end function
+
+function GetLicense()
+	result = {
+		screenTarget:		"paragraph"
+		title:			"Licenses"
+		shortDescriptionLine1:	"Licenses"
+		shortDescriptionLine2:	"Licensing information"
+		sdPosterURL:		"pkg:/images/mm_icon_focus_sd.png"
+		hdPosterURL:		"pkg:/images/mm_icon_focus_hd.png"
+		paragraphs:		[
+						"The content of this channel is distributed under a CC-BY-SA license (http://creativecommons.org/licenses/by-sa/3.0/) by Jupiter Broadcasting (www.jupiterbroadcasting.com).",
+						"This channel is Copyright (C) 2012 Roku, CBojar, and is released under the terms of the MIT license (http://www.opensource.org/licenses/MIT).",
+					]
+	}
+
 	return result
 end function

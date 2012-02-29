@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <opml version="1.0">
-<body
-	backgroundColor="#444444"
-	leftBreadcrumbColor="#00EE00"
-	rightBreadcrumbColor="#0000EE"
-	posterScreenTitleColor="#EEEE00"
-	posterScreenSubtitleColor="#00EE00"
-	posterScreenSynopsisColor="#EEEEEE"
-	springboardScreenTitleColor="#00EE00"
-	springboardScreenSynopsisColor="#EEEEEE"
-	springboardScreenActorColor="#EEEE00"
-	springboardScreenDirectorColor="#EEEE00"
-	springboardScreenDateColor="#EEEE00">
-	<outline title="Barely Digital" subtitle="powered by NextNewNetworks.com" img="http://images.nextnewnetworks.com/20fef47ab57507cbba4ac8dd9d54ba1e.jpg" url="http://www.barelydigital.com/mrss" />
-	<outline title="Loaded" subtitle="powered by CNET.com" img="http://www.cnet.com/i/pod/images/podcastsHD_loaded_300x300.jpg" url="http://loadedhdpodcast.cnettv.com" />
+<body>
+	<outline title="Linux Action Show" subtitle="" img="http://www.jupiterbroadcasting.com/images/LASBadge-HD144.jpg" url="http://feeds.feedburner.com/linuxashd?format=xml" />
+	<outline title="TechSNAP" subtitle="" img="http://www.jupiterbroadcasting.com/images/techsnap/techsnapHD.jpg" url="http://feeds.feedburner.com/techsnaphd?format=xml" />
+	<outline title="In Depth Look" subtitle="" img="http://www.jupiterbroadcasting.com/images/InDepthLook_HD.jpg" url="http://www.jupiterbroadcasting.com/feeds/indepthlookihd.xml" />
+	<outline title="STOked" subtitle="" img="http://www.jupiterbroadcasting.com/images/STOked-BadgeHD.png" url="http://feeds.feedburner.com/stokedhd?format=xml" />
+	<outline title="Faux Show" subtitle="" img="http://a.images.blip.tv/FauxShow-300x300_show_image205.png" url="http://blip.tv/fauxshow/rss/itunes" />
+	<outline title="SciByte" subtitle="" img="http://www.jupiterbroadcasting.com/images/SciByteBadgeHD144.jpg" url="http://feeds.feedburner.com/scibytehd?format=xml" />
+	<outline title="JB Archive" subtitle="" img="pkg:/images/mm_icon_focus_hd.png">
+		<outline title="LAS Old Feed" subtitle="Old LAS and CAS episodes" url="http://feeds.feedburner.com/computeractionshowvideo?format=xml" />
+		<outline title="LOTSO" subtitle="Legend of the Stoned Owl" url="http://www.jupiterbroadcasting.com/show/legend-of-the-stoned-owl/feed/" />
+		<outline title="MMOrgue" subtitle="" url="http://www.jupiterbroadcasting.com/show/mmorgue/feed/" />
+		<outline title="Beer Is Tasty" subtitle="" url="http://www.jupiterbroadcasting.com/show/beeristasty/feed/" />
+		<outline title="Jupiter@Nite" subtitle="" url="http://www.jupiterbroadcasting.com/show/nite/feed/" />
+	</outline>
 </body>
 </opml>
