@@ -52,12 +52,12 @@ function LoadConfig()
 
 	result.push( GetLiveStream() )
 
-	'raw = ReadASCIIFile("pkg:/config.opml")
-	raw = NWM_UT_GetStringFromURL( "http://cbojar.net/roku/jb/opml.xml" )
-	opml = CreateObject("roXMLElement")
-	if opml.Parse(raw)
+	'raw = ReadASCIIFile("pkg:/config.opml") ' Pull configuration from a local config file
+	raw = NWM_UT_GetStringFromURL( "http://cbojar.net/roku/jb/opml.xml" ) ' Pull configuration from a remote config file
+	opml = CreateObject( "roXMLElement" )
+	if opml.Parse( raw )
 		for each category in opml.body.outline
-			result.Push(BuildCategory(category))
+			result.Push( BuildCategory( category ) )
 		next
 	end if
 
@@ -66,20 +66,20 @@ function LoadConfig()
 	return result
 end function
 
-function BuildCategory(category)
+function BuildCategory( category )
 	result = {
-		title:			ValidStr(category@title)
-		shortDescriptionLine1:	ValidStr(category@title)
-		shortDescriptionLine2:	ValidStr(category@subtitle)
-		sdPosterURL:		ValidStr(category@img)
-		hdPosterURL:		ValidStr(category@img)
-		url:			ValidStr(category@url)
+		title:			ValidStr( category@title )
+		shortDescriptionLine1:	ValidStr( category@title )
+		shortDescriptionLine2:	ValidStr( category@subtitle )
+		sdPosterURL:		ValidStr( category@img )
+		hdPosterURL:		ValidStr( category@img )
+		url:			ValidStr( category@url )
 		categories:		[]
 	}
 	
 	if category.outline.Count() > 0
 		for each subCategory in category.outline
-			result.categories.Push(BuildCategory(subCategory))
+			result.categories.Push( BuildCategory( subCategory ) )
 		next
 	end if
 	
@@ -114,7 +114,7 @@ function GetLicense()
 		hdPosterURL:		"pkg:/images/mm_icon_focus_hd.png"
 		paragraphs:		[
 						"The content of this channel is distributed under a CC-BY-SA license (http://creativecommons.org/licenses/by-sa/3.0/) by Jupiter Broadcasting (www.jupiterbroadcasting.com).",
-						"This channel is Copyright (C) 2012 Roku, CBojar, and is released under the terms of the MIT license (http://www.opensource.org/licenses/MIT).",
+						"This channel is Copyright (C) 2012 Roku, CBojar, and is released under the terms of the MIT license (http://www.opensource.org/licenses/MIT). The project page can be found at code.google.com/p/jupiterbroadcasting-roku/.",
 					]
 	}
 
