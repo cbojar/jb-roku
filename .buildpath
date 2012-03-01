@@ -2,5 +2,4 @@
 <buildpath>
 	<buildpathentry kind="src" path="images"/>
 	<buildpathentry kind="src" path="source"/>
-	<buildpathentry kind="src" path="out"/>
 </buildpath>

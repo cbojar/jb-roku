@@ -66,22 +66,29 @@ function NWM_MRSS_GetEpisodes(limit = 0)
 				newItem.synopsis = description
 			end if
 
-			' thumbnail
-			tmp = item.GetNamedElements("media:thumbnail")
-			'if tmp.Count() > 0
-			'	newItem.sdPosterURL = ValidStr(tmp[0]@url)
-			'	newItem.hdPosterURL = ValidStr(tmp[0]@url)
-			'else if xml.channel.image.url.Count() > 0
-			'	newItem.sdPosterURL = ValidStr(xml.channel.image.url.GetText())
-			'	newItem.hdPosterURL = ValidStr(xml.channel.image.url.GetText())
-			'end if
+			' hq thumbnail
+			tmp = item.GetNamedElements("media:thumbnail") 
 			if tmp.Count() > 0
 				newItem.sdPosterURL_hq = ValidStr(tmp[0]@url)
 				newItem.hdPosterURL_hq = ValidStr(tmp[0]@url)
 			end if
-			if xml.channel.image.url.Count() > 0
+
+			' thumbnail
+			if xml.channel.image.url.Count() > 0 ' rss standard image tag
 				newItem.sdPosterURL = ValidStr(xml.channel.image.url.GetText())
 				newItem.hdPosterURL = ValidStr(xml.channel.image.url.GetText())
+			else
+				tmp = xml.channel.GetNamedElements("media:thumbnail") ' mrss media tag
+				if tmp.Count() > 0
+					newItem.sdPosterURL = ValidStr(tmp[0]@url)
+					newItem.hdPosterURL = ValidStr(tmp[0]@url)
+				else
+					tmp = xml.channel.GetNamedElements("itunes:image") ' less-than-standard itunes image tag
+					if tmp.Count() > 0
+						newItem.sdPosterURL = ValidStr(tmp[0]@href)
+						newItem.hdPosterURL = ValidStr(tmp[0]@href)
+					end if
+				end if
 			end if
 				
 			' categories
