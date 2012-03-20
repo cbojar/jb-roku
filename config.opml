@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <opml version="1.0">
 <body>
-	<outline title="Linux Action Show" subtitle="" img="http://www.jupiterbroadcasting.com/images/LASBadge-HD144.jpg" url="http://feeds.feedburner.com/linuxashd?format=xml" />
-	<outline title="TechSNAP" subtitle="" img="http://www.jupiterbroadcasting.com/images/techsnap/techsnapHD.jpg" url="http://feeds.feedburner.com/techsnaphd?format=xml" />
-	<outline title="In Depth Look" subtitle="" img="http://www.jupiterbroadcasting.com/images/InDepthLook_HD.jpg" url="http://www.jupiterbroadcasting.com/feeds/indepthlookihd.xml" />
-	<outline title="STOked" subtitle="" img="http://www.jupiterbroadcasting.com/images/STOked-BadgeHD.png" url="http://feeds.feedburner.com/stokedhd?format=xml" />
-	<outline title="Faux Show" subtitle="" img="http://a.images.blip.tv/FauxShow-300x300_show_image205.png" url="http://blip.tv/fauxshow/rss/itunes" />
-	<outline title="SciByte" subtitle="" img="http://www.jupiterbroadcasting.com/images/SciByteBadgeHD144.jpg" url="http://feeds.feedburner.com/scibytehd?format=xml" />
-	<outline title="JB Archive" subtitle="" img="pkg:/images/mm_icon_focus_hd.png">
-		<outline title="LAS Old Feed" subtitle="Old LAS and CAS episodes" url="http://feeds.feedburner.com/computeractionshowvideo?format=xml" />
-		<outline title="LOTSO" subtitle="Legend of the Stoned Owl" url="http://www.jupiterbroadcasting.com/show/legend-of-the-stoned-owl/feed/" />
-		<outline title="MMOrgue" subtitle="" url="http://www.jupiterbroadcasting.com/show/mmorgue/feed/" />
-		<outline title="Beer Is Tasty" subtitle="" url="http://www.jupiterbroadcasting.com/show/beeristasty/feed/" />
-		<outline title="Jupiter@Nite" subtitle="" url="http://www.jupiterbroadcasting.com/show/nite/feed/" />
+	<outline title="Linux Action Show" img="http://www.jupiterbroadcasting.com/images/LASBadge-HD144.jpg" url="http://feeds.feedburner.com/linuxashd?format=xml" />
+	<outline title="TechSNAP" img="http://www.jupiterbroadcasting.com/images/techsnap/techsnapHD.jpg" url="http://feeds.feedburner.com/techsnaphd?format=xml" />
+	<outline title="In Depth Look" img="http://www.jupiterbroadcasting.com/images/InDepthLook_HD.jpg" url="http://www.jupiterbroadcasting.com/feeds/indepthlookihd.xml" />
+	<outline title="STOked" img="http://www.jupiterbroadcasting.com/images/STOked-BadgeHD.png" url="http://feeds.feedburner.com/stokedhd?format=xml" />
+	<outline title="Faux Show" img="http://a.images.blip.tv/FauxShow-300x300_show_image205.png" url="http://blip.tv/fauxshow/rss/itunes" />
+	<outline title="SciByte" img="http://www.jupiterbroadcasting.com/images/SciByteBadgeHD144.jpg" url="http://feeds.feedburner.com/scibytehd?format=xml" />
+	<outline title="JB Archive" img="http://www.jupiterbroadcasting.com/images/jbsmall.gif">
+		<outline title="LAS Old Feed" subtitle="Old LAS and CAS episodes" img="http://www.jupiterbroadcasting.com/images/LAS-VIDEO144.jpg" url="http://feeds.feedburner.com/computeractionshowvideo?format=xml" />
+		<outline title="LOTSO" subtitle="Legend of the Stoned Owl" img="http://www.jupiterbroadcasting.com/images/jbsmall.gif" url="http://www.jupiterbroadcasting.com/show/legend-of-the-stoned-owl/feed/" />
+		<outline title="MMOrgue" img="http://www.jupiterbroadcasting.com/images/jbsmall.gif" url="http://www.jupiterbroadcasting.com/show/mmorgue/feed/" />
+		<outline title="Beer Is Tasty" img="http://www.jupiterbroadcasting.com/images/jbsmall.gif" url="http://www.jupiterbroadcasting.com/show/beeristasty/feed/" />
+		<outline title="Jupiter@Nite" img="http://www.jupiterbroadcasting.com/images/jbsmall.gif" url="http://www.jupiterbroadcasting.com/show/nite/feed/" />
 	</outline>
 </body>
 </opml>
