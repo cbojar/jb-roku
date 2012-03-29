@@ -20,6 +20,7 @@ function NWM_UT_GetStringFromURL(url, userAgent = "")
 	
   ut = CreateObject("roURLTransfer")
   ut.SetPort(CreateObject("roMessagePort"))
+  ut.EnableEncodings(true) '' Enable gzip encoding
   if userAgent <> ""
 	  ut.AddHeader("user-agent", userAgent)
 	end if
