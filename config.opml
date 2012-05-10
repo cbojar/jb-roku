@@ -3,11 +3,11 @@
 <body>
 	<outline title="Linux Action Show" img="http://www.jupiterbroadcasting.com/images/LASBadge-HD144.jpg" url="http://feeds.feedburner.com/linuxashd?format=xml" />
 	<outline title="TechSNAP" img="http://www.jupiterbroadcasting.com/images/techsnap/techsnapHD.jpg" url="http://feeds.feedburner.com/techsnaphd?format=xml" />
-	<outline title="In Depth Look" img="http://www.jupiterbroadcasting.com/images/InDepthLook_HD.jpg" url="http://www.jupiterbroadcasting.com/feeds/indepthlookihd.xml" />
-	<outline title="STOked" img="http://www.jupiterbroadcasting.com/images/STOked-BadgeHD.png" url="http://feeds.feedburner.com/stokedhd?format=xml" />
-	<outline title="TORked" img="http://www.jupiterbroadcasting.com/images/TORked-Badge-HD.jpg" url="http://feeds.feedburner.com/TorkedHd" />
 	<outline title="Faux Show" img="http://a.images.blip.tv/FauxShow-300x300_show_image205.png" url="http://blip.tv/fauxshow/rss/itunes" />
 	<outline title="SciByte" img="http://www.jupiterbroadcasting.com/images/SciByteBadgeHD144.jpg" url="http://feeds.feedburner.com/scibytehd?format=xml" />
+	<outline title="STOked" img="http://www.jupiterbroadcasting.com/images/STOked-BadgeHD.png" url="http://feeds.feedburner.com/stokedhd?format=xml" />
+	<outline title="TORked" img="http://www.jupiterbroadcasting.com/images/TORked-Badge-HD.jpg" url="http://feeds.feedburner.com/TorkedHd" />
+	<outline title="In Depth Look" img="http://www.jupiterbroadcasting.com/images/InDepthLook_HD.jpg" url="http://www.jupiterbroadcasting.com/feeds/indepthlookihd.xml" />
 	<outline title="JB Archive" img="http://www.jupiterbroadcasting.com/images/jbsmall.gif">
 		<outline title="LAS Old Feed" subtitle="Old LAS and CAS episodes" img="http://www.jupiterbroadcasting.com/images/LAS-VIDEO144.jpg" url="http://feeds.feedburner.com/computeractionshowvideo?format=xml" />
 		<outline title="LOTSO" subtitle="Legend of the Stoned Owl" img="http://www.jupiterbroadcasting.com/images/jbsmall.gif" url="http://www.jupiterbroadcasting.com/show/legend-of-the-stoned-owl/feed/" />
