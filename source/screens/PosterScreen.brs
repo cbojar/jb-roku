@@ -3,7 +3,9 @@ sub ShowPosterScreen( contentList, breadcrumb="Jupiter Broadcasting" )
 	screen.SetMessagePort( CreateObject( "roMessagePort" ) )
 	screen.SetListStyle( "flat-category" )
 	screen.SetBreadcrumbText( "", breadcrumb )
-	screen.Show()
+
+	'screen.setAdURL( sdAd, hdAd )
+	'screen.setAdSelectable( false )
 
 	screen.SetContentList( contentList )
 	screen.Show()

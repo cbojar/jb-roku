@@ -1,6 +1,10 @@
 function ShowSpringboardScreen( episodes, selectedEpisode )
 	screen = CreateObject( "roSpringboardScreen" )
 	screen.SetMessagePort( CreateObject( "roMessagePort" ) )
+
+	'screen.setAdURL( sdAd, hdAd )
+	'screen.setAdSelectable( false )
+
 	screen.SetStaticRatingEnabled( false )
 	setButtons( screen, episodes[selectedEpisode] )
 	screen.Show()

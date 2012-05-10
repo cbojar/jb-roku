@@ -2,6 +2,9 @@ function ShowLivestreamScreen( livestream )
 	screen = CreateObject( "roSpringboardScreen" )
 	screen.SetMessagePort( CreateObject( "roMessagePort" ) )	
 
+	'screen.setAdURL( sdAd, hdAd )
+	'screen.setAdSelectable( false )
+
 	screen.SetStaticRatingEnabled( false )
 	screen.AddButton( 1, "Play" )
 	screen.SetContent( livestream )
