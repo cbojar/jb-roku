@@ -2,7 +2,7 @@ function ShowSpringboardScreen( episodes, selectedEpisode )
 	screen = CreateObject( "roSpringboardScreen" )
 	screen.SetMessagePort( CreateObject( "roMessagePort" ) )
 	screen.SetStaticRatingEnabled( false )
-	screen.AddButton( 1, "Play" )
+	setButtons( screen, episodes[selectedEpisode] )
 	screen.Show()
 
 	SpringBoardScreen_swapPoster( episodes[selectedEpisode] )
@@ -17,7 +17,21 @@ function ShowSpringboardScreen( episodes, selectedEpisode )
 			if msg.isScreenClosed()
 				exit while
 			else if msg.isButtonPressed()
-				ShowVideoScreen( episodes[selectedEpisode] )
+	                	if msg.GetIndex() = 1
+					PlayStart = RegRead( episodes[selectedEpisode].title )
+					if PlayStart <> invalid then
+						episodes[selectedEpisode].PlayStart = PlayStart.ToInt()
+					end if
+					ShowVideoScreen( episodes[selectedEpisode] )
+					setButtons( screen, episodes[selectedEpisode] )
+					screen.Show()
+				end if
+				if msg.GetIndex() = 2
+					episodes[selectedEpisode].PlayStart = 0
+					ShowVideoScreen( episodes[selectedEpisode] )
+					setButtons( screen, episodes[selectedEpisode] )
+					screen.Show()
+				end if
 			else if msg.isRemoteKeyPressed()
 				if msg.GetIndex() = 4 ' LEFT
 					if selectedEpisode = 0
@@ -51,5 +65,15 @@ sub SpringBoardScreen_swapPoster( show )
 	if show.hdPosterURL_hq <> invalid and show.hdPosterURL_hq <> ""
 		show.hdPosterURL = show.hdPosterURL_hq
 		show.hdPosterURL_hq = tmp
+	end if
+end sub
+
+sub setButtons( screen, episode )
+	screen.ClearButtons()
+	if RegRead( episode.title ) <> invalid and RegRead( episode.title ).toint() >=30 then
+		screen.AddButton( 1, "Resume Playing" )    
+		screen.AddButton( 2, "Play from Beginning" )    
+	else
+		screen.addbutton( 2,"Play" )
 	end if
 end sub

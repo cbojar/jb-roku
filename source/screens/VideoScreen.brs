@@ -22,9 +22,9 @@ Function showVideoScreen(episode As Object)
 	port = CreateObject("roMessagePort")
 	screen = CreateObject("roVideoScreen")
 	screen.SetMessagePort(port)
-	screen.Show()
 
-	screen.SetContent(episode)
+	screen.SetContent( episode )
+	screen.SetPositionNotificationPeriod( 3 ) 'Fire isPlaybackPosition every 3 seconds
 	screen.Show()
 
 	'Uncomment his line to dump the contents of the episode to be played
@@ -38,14 +38,18 @@ Function showVideoScreen(episode As Object)
 			if msg.isScreenClosed()
 				print "Screen closed"
 				exit while
-			elseif msg.isRequestFailed()
-				print "Video request failure: "; msg.GetIndex(); " " msg.GetData() 
-			elseif msg.isStatusMessage()
-				print "Video status: "; msg.GetIndex(); " " msg.GetData() 
-			elseif msg.isButtonPressed()
-				print "Button pressed: "; msg.GetIndex(); " " msg.GetData()
 			else if msg.isRequestFailed()
-		                print "play failed: "; msg.GetMessage()
+				print "Video request failure: "; msg.GetIndex(); " " msg.GetData() 
+			else if msg.isStatusMessage()
+				print "Video status: "; msg.GetIndex(); " " msg.GetData() 
+			else if msg.isButtonPressed()
+				print "Button pressed: "; msg.GetIndex(); " " msg.GetData()
+			else if msg.isPlaybackPosition() then
+		                nowpos = msg.GetIndex()
+		                RegWrite( episode.title, nowpos.toStr() )
+				print "Marked progress: "; msg.GetIndex()
+			else if msg.isFullResult() then
+		                RegDelete( episode.title )
 			else
 				print "Unexpected event type: "; msg.GetType()
 			end if

@@ -18,6 +18,8 @@ sub ShowPosterScreen( contentList, breadcrumb="Jupiter Broadcasting" )
 				selectedItem = contentList[msg.Getindex()]
 				if selectedItem.screenTarget = "video"
 					ShowVideoScreen( selectedItem )
+				else if selectedItem.screenTarget = "livestream"
+					ShowLivestreamScreen( selectedItem )
 				else if selectedItem.screenTarget = "paragraph"
 					ShowParagraphScreen( selectedItem )
 				else if selectedItem.categories <> invalid and selectedItem.categories.Count() > 0
