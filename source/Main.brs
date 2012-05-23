@@ -66,6 +66,9 @@ function LoadConfig()
 			next
 		end if
 	end if
+
+	result.push( GetQualityIcon() )
+
 	return result
 end function
 
@@ -79,13 +82,24 @@ function BuildCategory( category )
 		url:			ValidStr( category@url )
 		categories:		[]
 	}
+
+	if category@hqfeed <> invalid
+		result.url = ValidStr( category@hqfeed )
+	end if
+
+	quality = RegRead( "quality" )
+	if quality <> invalid AND strtoi( ValidStr( quality ) ) = 1
+		if category@lqfeed <> invalid
+			result.url = ValidStr( category@lqfeed )
+		end if
+	end if
 	
 	if category.outline.Count() > 0
 		for each subCategory in category.outline
 			result.categories.Push( BuildCategory( subCategory ) )
 		next
 	end if
-	
+
 	return result
 end function
 
@@ -106,6 +120,26 @@ function GetLiveStream()
 		streambitrates:		[0]
 		categories:		[]
 	}
+
+	return result
+end function
+
+function GetQualityIcon()
+	result = {
+		screenTarget:		"quality"
+		title:			"Quality"
+		shortDescriptionLine1:	"Quality"
+		shortDescriptionLine2:	"Currently set to HQ"
+		sdPosterURL:		"pkg:/images/mm_icon_focus_sd.png"
+		hdPosterURL:		"pkg:/images/mm_icon_focus_hd.png"
+		contentType:		"episode"
+		categories:		[]
+	}
+	
+	quality = RegRead( "quality" )
+	if( quality <> invalid AND strtoi( ValidStr( quality ) ) = 1 )
+		result.shortDescriptionLine2 = "Currently set to LQ (mobile quality)"
+	end if
 
 	return result
 end function

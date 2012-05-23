@@ -22,6 +22,11 @@ sub ShowPosterScreen( contentList, breadcrumb="Jupiter Broadcasting" )
 					ShowVideoScreen( selectedItem )
 				else if selectedItem.screenTarget = "livestream"
 					ShowLivestreamScreen( selectedItem )
+				else if selectedItem.screenTarget = "quality"
+					ShowQualityDialog()
+					contentList = LoadConfig()
+					screen.SetContentList( contentList )
+					screen.Show()
 				else if selectedItem.screenTarget = "paragraph"
 					ShowParagraphScreen( selectedItem )
 				else if selectedItem.categories <> invalid and selectedItem.categories.Count() > 0
