@@ -9,10 +9,9 @@ sub ShowPosterScreen( contentList, breadcrumb="Jupiter Broadcasting" )
 
 	screen.SetContentList( contentList )
 	screen.Show()
-	
+
 	while true
 		msg = wait( 0, screen.GetMessagePort() )
-
 		if msg <> invalid
 			if msg.isScreenClosed()
 				exit while

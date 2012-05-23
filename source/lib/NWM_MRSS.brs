@@ -1,4 +1,3 @@
-''
 ''	NWM_MRSS
 ''	chagedorn@roku.com
 ''
@@ -9,7 +8,6 @@
 ''		mrss = NWM_MRSS("http://www.example.com/mrss_feed.xml")	' iniitialize a NWM_MRSS object
 ''		episodes = mrss.GetEpisodes(10) ' get the first 10 episodes found in the MRSS feed
 ''		episodes = mrss.GetEpisodes() 	' get all episodes found in the MRSS feed
-''
 
 function NWM_MRSS(url)
 	this = {

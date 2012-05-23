@@ -18,4 +18,3 @@ sub ShowParagraphScreen( show )
 		endif
 	end while
 End sub
-

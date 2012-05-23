@@ -1,7 +1,7 @@
 sub Main()
 	LoadTheme()
 	categories = LoadConfig()
-	
+
 	if categories.Count() > 1
 		ShowPosterScreen( categories )
 	else
@@ -93,7 +93,7 @@ function BuildCategory( category )
 			result.url = ValidStr( category@lqfeed )
 		end if
 	end if
-	
+
 	if category.outline.Count() > 0
 		for each subCategory in category.outline
 			result.categories.Push( BuildCategory( subCategory ) )
@@ -135,7 +135,7 @@ function GetQualityIcon()
 		contentType:		"episode"
 		categories:		[]
 	}
-	
+
 	quality = RegRead( "quality" )
 	if( quality <> invalid AND strtoi( ValidStr( quality ) ) = 1 )
 		result.shortDescriptionLine2 = "Currently set to LQ (mobile quality)"

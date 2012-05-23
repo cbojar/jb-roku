@@ -16,7 +16,6 @@ function ShowSpringboardScreen( episodes, selectedEpisode )
 
 	while true
 		msg = wait( 0, screen.GetMessagePort() )
-		
 		if msg <> invalid
 			if msg.isScreenClosed()
 				exit while
@@ -55,7 +54,6 @@ function ShowSpringboardScreen( episodes, selectedEpisode )
 			end if
 		end if
 	end while
-
 	return selectedEpisode
 end function
 

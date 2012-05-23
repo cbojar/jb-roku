@@ -1,15 +1,14 @@
-REM If you import this, you also need to import Types
-REM (for isstr)
-REM
-REM Functions in this file:
-REM     isnonemptystr
-REM     isnullorempty
-REM     strtobool
-REM     itostr
-REM     strTrim
-REM     strTokenize
-REM     strReplace
-REM     
+'' If you import this, you also need to import Types
+'' (for isstr)
+''
+'' Functions in this file:
+''	isnonemptystr
+''	isnullorempty
+''	strtobool
+''	itostr
+''	strTrim
+''	strTokenize
+''	strReplace     
 
 '******************************************************
 'isnonemptystr
@@ -18,10 +17,9 @@ REM
 'and returns a string of non zero length
 '******************************************************
 Function isnonemptystr(obj)
-    if isnullorempty(obj) return false
-    return true
+	if isnullorempty(obj) return false
+	return true
 End Function
-
 
 '******************************************************
 'isnullorempty
@@ -30,12 +28,11 @@ End Function
 'the ifString interface and returns a string of non zero length
 '******************************************************
 Function isnullorempty(obj)
-    if obj = invalid return true
-    if not isstr(obj) return true
-    if Len(obj) = 0 return true
-    return false
+	if obj = invalid return true
+	if not isstr(obj) return true
+ 	if Len(obj) = 0 return true
+	return false
 End Function
-
 
 '******************************************************
 'strtobool
@@ -44,15 +41,15 @@ End Function
 'Looks for certain string values
 '******************************************************
 Function strtobool(obj As dynamic) As Boolean
-    if obj = invalid return false
-    if type(obj) <> "roString" and type(obj) <> "String" return false
-    o = strTrim(obj)
-    o = Lcase(o)
-    if o = "true" return true
-    if o = "t" return true
-    if o = "y" return true
-    if o = "1" return true
-    return false
+	if obj = invalid return false
+	if type(obj) <> "roString" and type(obj) <> "String" return false
+	o = strTrim(obj)
+	o = Lcase(o)
+	if o = "true" return true
+	if o = "t" return true
+	if o = "y" return true
+	if o = "1" return true
+	return false
 End Function
 
 '******************************************************
@@ -62,53 +59,48 @@ End Function
 'the builtin Stri(x) prepends whitespace
 '******************************************************
 Function itostr(i As Integer) As String
-    str = Stri(i)
-    return strTrim(str)
+	str = Stri(i)
+	return strTrim(str)
 End Function
-
 
 '******************************************************
 'Trim a string
 '******************************************************
 Function strTrim(str As String) As String
-    st=CreateObject("roString")
-    st.SetString(str)
-    return st.Trim()
+	st=CreateObject("roString")
+	st.SetString(str)
+	return st.Trim()
 End Function
-
 
 '******************************************************
 'Tokenize a string. Return roList of strings
 '******************************************************
 Function strTokenize(str As String, delim As String) As Object
-    st=CreateObject("roString")
-    st.SetString(str)
-    return st.Tokenize(delim)
+	st=CreateObject("roString")
+	st.SetString(str)
+	return st.Tokenize(delim)
 End Function
-
 
 '******************************************************
 'Replace substrings in a string. Return new string
 '******************************************************
 Function strReplace(basestr As String, oldsub As String, newsub As String) As String
-    newstr = ""
+	newstr = ""
+	i = 1
+	while i <= Len(basestr)
+		x = Instr(i, basestr, oldsub)
+		if x = 0 then
+			newstr = newstr + Mid(basestr, i)
+			exit while
+		endif
 
-    i = 1
-    while i <= Len(basestr)
-        x = Instr(i, basestr, oldsub)
-        if x = 0 then
-            newstr = newstr + Mid(basestr, i)
-            exit while
-        endif
+		if x > i then
+			newstr = newstr + Mid(basestr, i, x-i)
+			i = x
+		endif
 
-        if x > i then
-            newstr = newstr + Mid(basestr, i, x-i)
-            i = x
-        endif
-
-        newstr = newstr + newsub
-        i = i + Len(oldsub)
-    end while
-
-    return newstr
+		newstr = newstr + newsub
+		i = i + Len(oldsub)
+	end while
+	return newstr
 End Function

@@ -24,4 +24,3 @@ Sub ShowQualityDialog( title="Select Quality", text="Select video quality:" )
 		end if
 	end while
 End Sub
-

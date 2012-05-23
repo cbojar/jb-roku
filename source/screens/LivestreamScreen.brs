@@ -43,7 +43,7 @@ function ShowLivestreamScreen( livestream )
 		next
 		nestart = strtoi( ValidStr( nextevent.start.GetText() ) )
 		nefinish = strtoi( ValidStr( nextevent.finish.GetText() ) )
-		
+
 		islive = ( nestart < now_s AND nefinish > now_s ) ' If event starts before now and ends after now, it is live
 		desc = strReplace( nextevent.summary.GetText(), "LIVE: ", "" ) ' Remove "Live:" portions from description
 		if islive
@@ -52,18 +52,18 @@ function ShowLivestreamScreen( livestream )
 			nextlive = CreateObject( "roDateTime" )
 			nextlive.fromSeconds( nestart )
 			nextlive.toLocalTime()
-			
+
 			' Show next live show name and date
 			desc = "Next Live Show: " + desc + nl()
 			desc = desc + nextlive.asDateString( "long-date" ) + " "
-			
+
 			' Show next live show time (24hr)
 			desc = desc + itostr( nextlive.getHours() ) + ":"
 			if nextlive.getMinutes() < 10 ' If less than 10 minutes, add leading zero
 				desc = desc + "0"
 			end if
 			desc = desc + itostr( nextlive.getMinutes() )
-			
+
 			' Show next live show time (12hr)
 			ispm = nextlive.getHours() > 11 ' If hours is more than 11, is PM
 			desc = desc + " ("
@@ -102,7 +102,6 @@ function ShowLivestreamScreen( livestream )
 
 	while true
 		msg = wait( 0, screen.GetMessagePort() )
-		
 		if msg <> invalid
 			if msg.isScreenClosed()
 				exit while

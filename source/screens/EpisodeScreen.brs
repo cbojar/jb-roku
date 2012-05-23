@@ -4,7 +4,7 @@ sub ShowEpisodeScreen( show, breadcrumb="" )
 	screen.SetListStyle( "flat-episodic" )
 	screen.SetBreadcrumbText( "", breadcrumb )
 	screen.Show()
-	
+
 	mrss = NWM_MRSS( show.url )
 	content = mrss.GetEpisodes()
 	dialogSeen = false
@@ -14,7 +14,6 @@ sub ShowEpisodeScreen( show, breadcrumb="" )
 
 	while true
 		msg = wait( 0, screen.GetMessagePort() )
-
 		if msg <> invalid
 			if msg.isScreenClosed()
 				exit while

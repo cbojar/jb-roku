@@ -15,4 +15,3 @@ Sub ShowMessageDialog( title="", text="" )
 		end if
 	end while
 End Sub
-
