@@ -52,13 +52,19 @@ function LoadConfig()
 
 	result.push( GetLiveStream() )
 
-	'raw = ReadASCIIFile("pkg:/config.opml") ' Pull configuration from a local config file
-	raw = NWM_UT_GetStringFromURL( "http://cbojar.net/roku/jb/opml.xml" ) ' Pull configuration from a remote config file
 	opml = CreateObject( "roXMLElement" )
+	raw = NWM_UT_GetStringFromURL( "http://roku.jupitercolony.com/opml.xml" ) ' Pull configuration from a remote config file
 	if opml.Parse( raw )
 		for each category in opml.body.outline
 			result.Push( BuildCategory( category ) )
 		next
+	else ' Fallback if cannot contact server, find file, or parse
+		raw = ReadASCIIFile("pkg:/config.opml") ' Pull configuration from a local config file
+		if opml.Parse( raw )
+			for each category in opml.body.outline
+				result.Push( BuildCategory( category ) )
+			next
+		end if
 	end if
 	return result
 end function
@@ -86,7 +92,8 @@ end function
 function GetLiveStream()
 	result = {
 		screenTarget:		"livestream"
-		calendar:		"http://cbojar.net/roku/jb/cal.xml"
+		calendar:		"http://roku.jupitercolony.com/live-calendar.xml"
+		live:			true
 		title:			"Live Stream"
 		shortDescriptionLine1:	"Live Stream"
 		shortDescriptionLine2:	"Watch Jupiter Broadcasting Live!"
