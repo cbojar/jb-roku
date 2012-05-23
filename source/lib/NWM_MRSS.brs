@@ -31,10 +31,25 @@ function NWM_MRSS_GetEpisodes(limit = 0)
 	else
 		raw = ReadASCIIFile(m.url)
 	end if
-	'print raw
 
 	xml = CreateObject("roXMLElement")
 	if xml.Parse(raw)
+		' Channel thumbnail
+		channelthumb = ""
+		if xml.channel.image.url.Count() > 0 ' rss standard image tag
+			channelthumb = ValidStr(xml.channel.image.url.GetText())
+		else
+			tmp = xml.channel.GetNamedElements("media:thumbnail") ' mrss media tag
+			if tmp.Count() > 0
+				channelthumb = ValidStr(tmp[0]@url)
+			else
+				tmp = xml.channel.GetNamedElements("itunes:image") ' less-than-standard itunes image tag
+				if tmp.Count() > 0
+					channelthumb = ValidStr(tmp[0]@href)
+				end if
+			end if
+		end if
+
 		for each item in xml.channel.item
 			newItem = {
 				streams:	[]
@@ -73,23 +88,9 @@ function NWM_MRSS_GetEpisodes(limit = 0)
 				newItem.hdPosterURL_hq = ValidStr(tmp[0]@url)
 			end if
 
-			' thumbnail
-			if xml.channel.image.url.Count() > 0 ' rss standard image tag
-				newItem.sdPosterURL = ValidStr(xml.channel.image.url.GetText())
-				newItem.hdPosterURL = ValidStr(xml.channel.image.url.GetText())
-			else
-				tmp = xml.channel.GetNamedElements("media:thumbnail") ' mrss media tag
-				if tmp.Count() > 0
-					newItem.sdPosterURL = ValidStr(tmp[0]@url)
-					newItem.hdPosterURL = ValidStr(tmp[0]@url)
-				else
-					tmp = xml.channel.GetNamedElements("itunes:image") ' less-than-standard itunes image tag
-					if tmp.Count() > 0
-						newItem.sdPosterURL = ValidStr(tmp[0]@href)
-						newItem.hdPosterURL = ValidStr(tmp[0]@href)
-					end if
-				end if
-			end if
+			' thumbnail (from channel)
+			newItem.sdPosterURL = ValidStr(channelthumb)
+			newItem.hdPosterURL = ValidStr(channelthumb)
 				
 			' categories
 			tmp = item.GetNamedElements("media:category")
