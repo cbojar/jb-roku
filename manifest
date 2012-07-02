@@ -1,9 +1,9 @@
 title=Jupiter Broadcasting
 subtitle=Independent entertainment, on demand
-mm_icon_focus_hd=pkg:/images/mm_icon_focus_hd.png
+major_version=1
+minor_version=1
+build_version=120702
+mm_icon_focus_hd=pkg:/images/mm_icon_focus_hd.jpg
 mm_icon_side_hd=pkg:/images/mm_icon_side_hd.png
 mm_icon_focus_sd=pkg:/images/mm_icon_focus_sd.png
 mm_icon_side_sd=pkg:/images/mm_icon_side_sd.png
-major_version=1
-minor_version=1
-build_version=120522
