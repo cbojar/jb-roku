@@ -81,6 +81,17 @@ Function strTokenize(str As String, delim As String) As Object
 	return st.Tokenize(delim)
 End Function
 
+' Regex string replacement functions
+Function regexReplace( inputstr As String, regex As String, replacement As String, regexops As String ) As String
+	r = CreateObject( "roRegex", ValidStr( regex ), ValidStr( regexops ) )
+	return r.Replace( inputstr, ValidStr( replacement ) )
+End Function
+
+Function regexReplaceAll( inputstr As String, regex As String, replacement As String, regexops As String ) As String
+	r = CreateObject( "roRegex", ValidStr( regex ), ValidStr( regexops ) )
+	return r.ReplaceAll( inputstr, ValidStr( replacement ) )
+End Function
+
 '******************************************************
 'Replace substrings in a string. Return new string
 '******************************************************

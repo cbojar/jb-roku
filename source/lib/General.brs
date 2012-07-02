@@ -36,7 +36,7 @@ End Function
 '******************************************************
 ' Return a newline character
 '******************************************************
-Function nl()
+Function nl() As String
 	return chr(10)
 End Function
 

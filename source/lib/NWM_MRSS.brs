@@ -75,6 +75,8 @@ function NWM_MRSS_GetEpisodes(limit = 0)
 				newItem.synopsis = description
 			else
 				description = util.HTMLEntityDecode(util.HTMLStripTags(ValidStr(item.description.GetText())))
+				' Strip newlines and replace with spaces to get more text on the screen
+				description = regexReplaceAll( description, "(\r?\n)+", " ", "" )
 				newItem.description = description
 				newItem.synopsis = description
 			end if
