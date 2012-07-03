@@ -67,7 +67,7 @@ function LoadConfig()
 		end if
 	end if
 
-	result.push( GetQualityIcon() )
+	'result.push( GetQualityIcon() )
 
 	return result
 end function
