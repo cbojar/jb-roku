@@ -15,7 +15,7 @@ FILES=$( echo "$FILES" | grep -v "^./$" ) # Filter out current directory listing
 
 # Concatenate all source files together into a single file to improve compression
 BRS=$( echo "$FILES" | grep ".brs$" )
-cat $BRS | tr -d "\t" | grep -v "^'" | grep -v "^$" > "$BRSALL"
+cat $BRS | tr -d "\t" | sed -r 's|^\s+||g' | sed -r 's|\s+$||g' | grep -v "^'" | grep -v "^REM " | grep -v "^REM$" | grep -v "^$" > "$BRSALL"
 
 # Filter out source files
 FILESNOSRC=$( echo "$FILES" | grep -v ".brs$" | grep -v "source" )
