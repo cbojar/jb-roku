@@ -21,9 +21,9 @@ cat $BRS | tr -d "\t" | grep -v "^'" | grep -v "^$" > "$BRSALL"
 FILESNOSRC=$( echo "$FILES" | grep -v ".brs$" | grep -v "source" )
 
 # Remove target file if it already exists
-if [ -e "$TARGET" ]; do
+if [ -e "$TARGET" ]; then
 	rm -f "$TARGET"
-done
+fi
 
 # Build compressed archive
 echo "$BRSALL" | zip -9 -@ "$TARGET" # Add in monolithic source file
