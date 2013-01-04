@@ -13,6 +13,11 @@ FILES=$( echo "$FILES" | grep -v ".buildpath" ) # Filter out Eclipse buildpath f
 FILES=$( echo "$FILES" | grep -v "$TARGET" ) # Filter out target file
 FILES=$( echo "$FILES" | grep -v "^./$" ) # Filter out current directory listing
 
+if [ "$1" = "--debug" ]; then # Don't concatenate all files if debugging
+	echo "$FILES" | zip -9 -@ "$TARGET" # Add in all resources
+	exit
+fi
+
 # Concatenate all source files together into a single file to improve compression
 BRS=$( echo "$FILES" | grep ".brs$" )
 cat $BRS | tr -d "\t" | sed -r 's|^\s+||g' | sed -r 's|\s+$||g' | grep -v "^'" | grep -v "^REM " | grep -v "^REM$" | grep -v "^$" > "$BRSALL"
