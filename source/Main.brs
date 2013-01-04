@@ -117,7 +117,22 @@ function GetLiveStream()
 		streamurls:		["http://videocdn-us.geocdn.scaleengine.net/jblive-iphone/live/jblive.stream/playlist.m3u8"]
 		streamformat:		"hls"
 		streamqualities:	["SD"]
-		streambitrates:		[0]
+		streambitrates:	[0]
+		categories:		[]
+	}
+	
+	result.audio = {
+		live:			true
+		title:			"Audio Stream"
+		shortDescriptionLine1:	"Audio Stream"
+		shortDescriptionLine2:	"Listen To JB Radio Live!"
+		sdPosterURL:		"pkg:/images/mm_icon_focus_sd.jpg"
+		hdPosterURL:		"pkg:/images/mm_icon_focus_hd.jpg"
+		contentType:		"episode"
+		streamurls:		["http://jbradio.out.airtime.pro:8000/jbradio_a"]
+		streamformat:		"mp3"
+		streambitrates:	[0]
+		streamqualities:	["SD"]
 		categories:		[]
 	}
 
