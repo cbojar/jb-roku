@@ -8,7 +8,7 @@ function ShowLivestreamScreen( livestream )
 	' Disable star ratings
 	screen.SetStaticRatingEnabled( false )
 	' Add "Play" button
-	screen.AddButton( 1, "Play" )
+	Livestream_SetButtons( screen, false )
 	' Set content to live stream (automatically parses array)
 	screen.SetContent( livestream )
 	' Show screen
@@ -99,17 +99,39 @@ function ShowLivestreamScreen( livestream )
 		screen.SetContent( livestream )
 		screen.Show()
 	end if
+	
+	AudioStream = CreateAudioPlayer( screen.GetMessagePort() )
+	AudioStream.SetStream( livestream.audio )
 
 	while true
 		msg = wait( 0, screen.GetMessagePort() )
 		if msg <> invalid
 			if msg.isScreenClosed()
+				AudioStream.Stop()
 				exit while
 			else if msg.isButtonPressed()
-				ShowVideoScreen( livestream )
+				if msg.GetIndex() = 1
+					AudioStream.Stop()
+					ShowVideoScreen( livestream )
+				else if msg.GetIndex() = 2
+					AudioStream.Play()
+				else if msg.GetIndex() = 3
+					AudioStream.Stop()
+				endif
+				Livestream_SetButtons( screen, AudioStream.IsPlaying() )
 			endif
 		end if
 	end while
 
 	return selectedEpisode
 end function
+
+sub Livestream_SetButtons( screen, isPlaying )
+	screen.ClearButtons()
+	if isPlaying
+		screen.AddButton( 3, "Stop Listening" )
+	else
+		screen.AddButton( 1, "Play" )
+		screen.AddButton( 2, "Listen" )
+	end if
+end sub
