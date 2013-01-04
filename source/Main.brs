@@ -116,7 +116,7 @@ function GetLiveStream()
 		contentType:		"episode"
 		streamurls:		["http://videocdn-us.geocdn.scaleengine.net/jblive-iphone/live/jblive.stream/playlist.m3u8"]
 		streamformat:		"hls"
-		streamqualities:	["HD"]
+		streamqualities:	["SD"]
 		streambitrates:		[0]
 		categories:		[]
 	}
