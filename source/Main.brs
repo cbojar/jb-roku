@@ -111,7 +111,7 @@ function GetLiveStream()
 		title:			"Live Stream"
 		shortDescriptionLine1:	"Live Stream"
 		shortDescriptionLine2:	"Watch Jupiter Broadcasting Live!"
-		sdPosterURL:		"pkg:/images/mm_icon_focus_sd.png"
+		sdPosterURL:		"pkg:/images/mm_icon_focus_sd.jpg"
 		hdPosterURL:		"pkg:/images/mm_icon_focus_hd.jpg"
 		contentType:		"episode"
 		streamurls:		["http://videocdn-us.geocdn.scaleengine.net/jblive-iphone/live/jblive.stream/playlist.m3u8"]
@@ -130,7 +130,7 @@ function GetQualityIcon()
 		title:			"Quality"
 		shortDescriptionLine1:	"Quality"
 		shortDescriptionLine2:	"Currently set to HQ"
-		sdPosterURL:		"pkg:/images/mm_icon_focus_sd.png"
+		sdPosterURL:		"pkg:/images/mm_icon_focus_sd.jpg"
 		hdPosterURL:		"pkg:/images/mm_icon_focus_hd.jpg"
 		contentType:		"episode"
 		categories:		[]
