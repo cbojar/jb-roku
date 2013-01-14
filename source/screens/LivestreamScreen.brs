@@ -131,7 +131,7 @@ sub Livestream_SetButtons( screen, isPlaying )
 	if isPlaying
 		screen.AddButton( 3, "Stop Listening" )
 	else
-		screen.AddButton( 1, "Play" )
+		screen.AddButton( 1, "Watch" )
 		screen.AddButton( 2, "Listen" )
 	end if
 end sub
