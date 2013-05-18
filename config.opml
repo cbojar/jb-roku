@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <opml version="1.0">
 <body>
-<outline title="Plan B" img="http://www.jupiterbroadcasting.com/images/planb-badge.jpg" url="http://feeds.feedburner.com/PlanBVideo"
-	hqfeed="http://feeds.feedburner.com/PlanBVideo"
-	lqfeed="http://feeds.feedburner.com/PlanBVideo"
-/>
 <outline title="Linux Action Show" img="http://www.jupiterbroadcasting.com/images/LASBadge-HD144.jpg" url="http://feeds.feedburner.com/linuxashd?format=xml"
 	hqfeed="http://feeds.feedburner.com/linuxashd?format=xml"
 	lqfeed="http://feeds.feedburner.com/linuxactionshowipodvid?format=xml"
@@ -24,6 +20,10 @@
 <outline title="Unfilter" img="http://www.jupiterbroadcasting.com/images/itunes-badge144.jpg" url="http://www.jupiterbroadcasting.com/feeds/unfilterHD.xml"
 	hqfeed="http://www.jupiterbroadcasting.com/feeds/unfilterHD.xml"
 	lqfeed="http://www.jupiterbroadcasting.com/feeds/unfilterMob.xml"
+/>
+<outline title="Plan B" img="http://www.jupiterbroadcasting.com/images/planb-badge.jpg" url="http://feeds.feedburner.com/PlanBVideo"
+	hqfeed="http://feeds.feedburner.com/PlanBVideo"
+	lqfeed="http://feeds.feedburner.com/PlanBVideo"
 />
 <outline title="SciByte" img="http://www.jupiterbroadcasting.com/images/SciByteBadgeHD144.jpg" url="http://feeds.feedburner.com/scibytehd?format=xml"
 	hqfeed="http://feeds.feedburner.com/scibytehd?format=xml"
