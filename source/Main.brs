@@ -12,8 +12,8 @@ end sub
 sub LoadTheme()
 	app = CreateObject( "roAppManager" )
 	theme = CreateObject( "roAssociativeArray" )
-	theme.OverhangSliceSD = "pkg:/images/Overhang_Slice_SD.png"
-	theme.OverhangSliceHD = "pkg:/images/Overhang_Slice_HD.png"
+	theme.OverhangSliceSD = "pkg:/images/Overhang_Background_SD.jpg"
+	theme.OverhangSliceHD = "pkg:/images/Overhang_Background_HD.jpg"
 	theme.OverhanglogoHD = "pkg:/images/Logo_Overhang_JB_HD.png"
 	theme.OverhanglogoSD = "pkg:/images/Logo_Overhang_JB_SD.png"
 
