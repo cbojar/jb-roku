@@ -65,9 +65,10 @@ function LoadConfig()
 				result.Push( BuildCategory( category ) )
 			next
 		end if
+		ShowMessageDialog( "Cannot Connect", "Cannot connect to server. Please check your connection and try again." )
 	end if
 
-	'result.push( GetQualityIcon() )
+	result.push( GetQualityIcon() )
 
 	return result
 end function
@@ -145,8 +146,8 @@ function GetQualityIcon()
 		title:			"Quality"
 		shortDescriptionLine1:	"Quality"
 		shortDescriptionLine2:	"Currently set to HQ"
-		sdPosterURL:		"pkg:/images/mm_icon_focus_sd.jpg"
-		hdPosterURL:		"pkg:/images/mm_icon_focus_hd.jpg"
+		sdPosterURL:		"pkg:/images/settings.png"
+		hdPosterURL:		"pkg:/images/settings.png"
 		contentType:		"episode"
 		categories:		[]
 	}
