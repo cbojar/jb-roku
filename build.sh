@@ -10,6 +10,7 @@ FILES=$( echo "$FILES" | grep -v ".hg" ) # Filter out Mercurial-related files
 FILES=$( echo "$FILES" | grep -v ".svn" ) # Filter out SVN-related files
 FILES=$( echo "$FILES" | grep -v ".project" ) # Filter out Eclipse project file
 FILES=$( echo "$FILES" | grep -v ".buildpath" ) # Filter out Eclipse buildpath file
+FILES=$( echo "$FILES" | grep -v "resources" ) # Filter out resources folder
 FILES=$( echo "$FILES" | grep -v "$TARGET" ) # Filter out target file
 FILES=$( echo "$FILES" | grep -v "^./$" ) # Filter out current directory listing
 
