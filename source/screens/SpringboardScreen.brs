@@ -14,19 +14,19 @@ function ShowSpringboardScreen( episodes, selectedEpisode )
 			if msg.isScreenClosed()
 				exit while
 			else if msg.isButtonPressed()
-	                	if msg.GetIndex() = 1
+				if msg.GetIndex() = 1
 					PlayStart = RegRead( episodes[selectedEpisode].title )
 					if PlayStart <> invalid then
 						episodes[selectedEpisode].PlayStart = PlayStart.ToInt()
 					end if
 					ShowVideoScreen( episodes[selectedEpisode] )
-					setButtons( screen, episodes[selectedEpisode] )
+					SpringBoardScreen_setButtons( screen, episodes[selectedEpisode] )
 					screen.Show()
 				end if
 				if msg.GetIndex() = 2
 					episodes[selectedEpisode].PlayStart = 0
 					ShowVideoScreen( episodes[selectedEpisode] )
-					setButtons( screen, episodes[selectedEpisode] )
+					SpringBoardScreen_setButtons( screen, episodes[selectedEpisode] )
 					screen.Show()
 				end if
 			else if msg.isRemoteKeyPressed()
