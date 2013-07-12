@@ -53,7 +53,6 @@ end function
 
 sub SpringBoardScreen_showContent( screen, episode )
     SpringBoardScreen_setButtons( screen, episode )
-    screen.Show()
 
     SpringBoardScreen_swapPoster( episode )
     screen.SetContent( episode )
