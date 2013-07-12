@@ -6,13 +6,7 @@ function ShowSpringboardScreen( episodes, selectedEpisode )
 	'screen.setAdSelectable( false )
 
 	screen.SetStaticRatingEnabled( false )
-	setButtons( screen, episodes[selectedEpisode] )
-	screen.Show()
-
-	SpringBoardScreen_swapPoster( episodes[selectedEpisode] )
-	screen.SetContent( episodes[selectedEpisode] )
-	screen.Show()
-	SpringBoardScreen_swapPoster( episodes[selectedEpisode] )
+	SpringBoardScreen_showContent( screen, episodes[selectedEpisode] )
 
 	while true
 		msg = wait( 0, screen.GetMessagePort() )
@@ -42,20 +36,30 @@ function ShowSpringboardScreen( episodes, selectedEpisode )
 					else
 						selectedEpisode = selectedEpisode - 1
 					end if
-					screen.SetContent( episodes[selectedEpisode] )
+					SpringBoardScreen_showContent( screen, episodes[selectedEpisode] )
 				else if msg.GetIndex() = 5 ' RIGHT
 					if selectedEpisode = episodes.Count() - 1
 						selectedEpisode = 0
 					else
 						selectedEpisode = selectedEpisode + 1
 					end if
-					screen.SetContent( episodes[selectedEpisode] )
+                    SpringBoardScreen_showContent( screen, episodes[selectedEpisode] )
 				end if
 			end if
 		end if
 	end while
 	return selectedEpisode
 end function
+
+sub SpringBoardScreen_showContent( screen, episode )
+    SpringBoardScreen_setButtons( screen, episode )
+    screen.Show()
+
+    SpringBoardScreen_swapPoster( episode )
+    screen.SetContent( episode )
+    screen.Show()
+    SpringBoardScreen_swapPoster( episode )
+end sub
 
 sub SpringBoardScreen_swapPoster( show )
 	tmp = show.sdPosterURL
@@ -70,7 +74,7 @@ sub SpringBoardScreen_swapPoster( show )
 	end if
 end sub
 
-sub setButtons( screen, episode )
+sub SpringBoardScreen_setButtons( screen, episode )
 	screen.ClearButtons()
 	if RegRead( episode.title ) <> invalid and RegRead( episode.title ).toint() >=30 then
 		screen.AddButton( 1, "Resume Playing" )    
