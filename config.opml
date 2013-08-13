@@ -5,6 +5,10 @@
 	hqfeed="http://feeds.feedburner.com/linuxashd?format=xml"
 	lqfeed="http://feeds.feedburner.com/linuxactionshowipodvid?format=xml"
 />
+<outline title="LINUX Unplugged" img="http://www.jupiterbroadcasting.com/images/LASUN-Badge1400.jpg" url="http://feeds.feedburner.com/linuxunvid?format=xml"
+	hqfeed="http://feeds.feedburner.com/linuxunvid?format=xml"
+	lqfeed="http://feeds.feedburner.com/linuxunvid?format=xml"
+/>
 <outline title="TechSNAP" img="http://www.jupiterbroadcasting.com/images/techsnap/techsnapHD.jpg" url="http://feeds.feedburner.com/techsnaphd?format=xml"
 	hqfeed="http://feeds.feedburner.com/techsnaphd?format=xml"
 	lqfeed="http://feeds.feedburner.com/techsnapmobile?format=xml"
