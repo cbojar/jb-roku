@@ -5,7 +5,7 @@
 	hqfeed="http://feeds.feedburner.com/linuxashd?format=xml"
 	lqfeed="http://feeds.feedburner.com/linuxactionshowipodvid?format=xml"
 />
-<outline title="LINUX Unplugged" img="http://www.jupiterbroadcasting.com/images/LASUN-Badge1400.jpg" url="http://feeds.feedburner.com/linuxunvid?format=xml"
+<outline title="LINUX Unplugged" img="http://roku.jupitercolony.com/LINUX-Unplugged.jpg" url="http://feeds.feedburner.com/linuxunvid?format=xml"
 	hqfeed="http://feeds.feedburner.com/linuxunvid?format=xml"
 	lqfeed="http://feeds.feedburner.com/linuxunvid?format=xml"
 />
@@ -25,7 +25,7 @@
 	hqfeed="http://www.jupiterbroadcasting.com/feeds/unfilterHD.xml"
 	lqfeed="http://www.jupiterbroadcasting.com/feeds/unfilterMob.xml"
 />
-<outline title="Plan B" img="http://www.jupiterbroadcasting.com/images/planb-badge.jpg" url="http://feeds.feedburner.com/PlanBVideo"
+<outline title="Plan B" img="http://roku.jupitercolony.com/PlanB.png" url="http://feeds.feedburner.com/PlanBVideo"
 	hqfeed="http://feeds.feedburner.com/PlanBVideo"
 	lqfeed="http://feeds.feedburner.com/PlanBVideo"
 />
