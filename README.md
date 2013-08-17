@@ -1,4 +1,4 @@
-Just imagine sitting back on your couch, turning on your flat-screen, and watching Chris and Bryan discuss the vagarities of Fedora's latest naming scheme in crisp 720p HD. That dream is now a reality, thanks to Roku and the [Jupiter Broadcasting][jb] Roku channel.
+Just imagine sitting back on your couch, turning on your flat-screen, and watching Chris and Matt discuss the battle lines being drawn between the Wayland and Mir camps (maybe even in a monkey suit) in crisp 720p HD. That dream is now a reality, thanks to Roku and the [Jupiter Broadcasting][jb] Roku channel.
 
 Installing
 ==========
