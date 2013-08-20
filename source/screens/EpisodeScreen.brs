@@ -20,7 +20,7 @@ sub ShowEpisodeScreen( show, breadcrumb="" )
 			else if msg.isListItemFocused()
 				selectedEpisode = msg.GetIndex()
 			else if msg.isListItemSelected()
-				selectedEpisode = ShowSpringboardScreen( content, selectedEpisode )
+				selectedEpisode = CreateSpringboardScreen(content, selectedEpisode).showScreen()
 				screen.SetFocusedListItem( selectedEpisode )
 			else if msg.isRemoteKeyPressed()
 				if msg.GetIndex() = 13
