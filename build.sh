@@ -1,6 +1,31 @@
 #!/bin/bash
+DEBUG=0
+PRESERVE_TEMP=0
 TARGET="JB-Roku.zip"
 BRSALL="source/jupiterbroadcasting-roku.brs" # Monolithic source file to be made
+
+PARSED_OPTIONS=$( getopt -n "$0" -o hdp --long "help,debug,preserve-temp"  -- "$@" )
+if [ $? -ne 0 ]; then #Bad arguments, something has gone wrong
+	exit 1
+fi
+eval set -- "$PARSED_OPTIONS" # getopt magic
+
+while true; do
+	case "$1" in
+		-h|--help)
+			echo "Usage: $0 [-d|--debug] [-p|--preserve-temp]"
+			shift;;
+		-d|--debug)
+			DEBUG=1
+			shift;;
+		-p|--preserve-temp)
+			PRESERVE_TEMP=1
+			shift;;
+		--)
+			shift
+			break;;
+	esac
+done
 
 # Filter list of files only to those needing built
 FILES=$( find ./ ) # List all files
@@ -15,7 +40,7 @@ FILES=$( echo "$FILES" | grep -v 'resources' ) # Filter out resources folder
 FILES=$( echo "$FILES" | grep -v "$TARGET" ) # Filter out target file
 FILES=$( echo "$FILES" | grep -v '^\./$' ) # Filter out current directory listing
 
-if [ "$1" = "--debug" ]; then # Don't concatenate all files if debugging
+if [ $DEBUG = 1 ]; then # Don't concatenate all files if debugging
 	# Remove target file if it already exists
 	if [ -e "$TARGET" ]; then
 		rm -f "$TARGET"
@@ -25,6 +50,9 @@ if [ "$1" = "--debug" ]; then # Don't concatenate all files if debugging
 fi
 
 # Concatenate all source files together into a single file to improve compression
+if [ -e "$BRSALL" ]; then
+	rm -f "$BRSALL"
+fi
 BRS=$( echo "$FILES" | grep ".brs$" )
 cat $BRS | tr -d "\t" | sed -r 's|^\s+||g' | sed -r 's|\s+$||g' | grep -v "^'" | grep -v "^REM " | grep -v "^REM$" | grep -v "^$" > "$BRSALL"
 
@@ -40,4 +68,6 @@ fi
 echo "$BRSALL" | zip -9 -@ "$TARGET" # Add in monolithic source file
 echo "$FILESNOSRC" | zip -9 -@ "$TARGET" # Add in all other resources
 
-rm "$BRSALL" # Remove monolithic source file
+if [ $PRESERVE_TEMP = 0 ]; then
+	rm "$BRSALL" # Remove monolithic source file
+fi
