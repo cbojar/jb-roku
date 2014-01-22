@@ -5,16 +5,21 @@ BRSALL="source/jupiterbroadcasting-roku.brs" # Monolithic source file to be made
 # Filter list of files only to those needing built
 FILES=$( find ./ ) # List all files
 FILES=$( echo "$FILES" | grep -v "$0" ) # Filter out this script
-FILES=$( echo "$FILES" | grep -v ".git" ) # Filter out Git-related files
-FILES=$( echo "$FILES" | grep -v ".hg" ) # Filter out Mercurial-related files
-FILES=$( echo "$FILES" | grep -v ".svn" ) # Filter out SVN-related files
-FILES=$( echo "$FILES" | grep -v ".project" ) # Filter out Eclipse project file
-FILES=$( echo "$FILES" | grep -v ".buildpath" ) # Filter out Eclipse buildpath file
-FILES=$( echo "$FILES" | grep -v "resources" ) # Filter out resources folder
+FILES=$( echo "$FILES" | grep -v '\.git' ) # Filter out Git-related files
+FILES=$( echo "$FILES" | grep -v '\.hg' ) # Filter out Mercurial-related files
+FILES=$( echo "$FILES" | grep -v '\.svn' ) # Filter out SVN-related files
+FILES=$( echo "$FILES" | grep -v '\.project' ) # Filter out Eclipse project file
+FILES=$( echo "$FILES" | grep -v '\.buildpath' ) # Filter out Eclipse buildpath file
+FILES=$( echo "$FILES" | grep -v '\.settings' ) # Filter out Eclipse settings folder
+FILES=$( echo "$FILES" | grep -v 'resources' ) # Filter out resources folder
 FILES=$( echo "$FILES" | grep -v "$TARGET" ) # Filter out target file
-FILES=$( echo "$FILES" | grep -v "^./$" ) # Filter out current directory listing
+FILES=$( echo "$FILES" | grep -v '^\./$' ) # Filter out current directory listing
 
 if [ "$1" = "--debug" ]; then # Don't concatenate all files if debugging
+	# Remove target file if it already exists
+	if [ -e "$TARGET" ]; then
+		rm -f "$TARGET"
+	fi
 	echo "$FILES" | zip -9 -@ "$TARGET" # Add in all resources
 	exit
 fi
