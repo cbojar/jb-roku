@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <opml version="1.0">
 <body>
 <outline title="Linux Action Show" img="http://www.jupiterbroadcasting.com/images/LASBadge-HD144.jpg" url="http://feeds.feedburner.com/linuxashd"
@@ -12,6 +12,10 @@
 <outline title="TechSNAP" img="http://www.jupiterbroadcasting.com/images/techsnap/techsnapHD.jpg" url="http://feeds.feedburner.com/techsnaphd"
 	hqfeed="http://feeds.feedburner.com/techsnaphd"
 	lqfeed="http://feeds.feedburner.com/techsnapmobile"
+/>
+<outline title="BSDNow" img="http://roku.jupitercolony.com/BSDNow.jpg" url="http://feeds.feedburner.com/BsdNowHd"
+	hqfeed="http://feeds.feedburner.com/BsdNowHd"
+	lqfeed="http://feeds.feedburner.com/BsdNowMobile"
 />
 <outline title="Faux Show" img="http://a.images.blip.tv/FauxShow-300x300_show_image205.png" url="http://blip.tv/fauxshow/rss/itunes"
 	hqfeed="http://www.jupiterbroadcasting.com/feeds/FauxShowHD.xml"
