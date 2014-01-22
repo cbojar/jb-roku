@@ -8,16 +8,16 @@ end sub
 
 function LoadTheme()
 	theme = CreateObject( "roAssociativeArray" )
-	theme.OverhangSliceSD = "pkg:/images/Overhang_Background_SD.jpg"
-	theme.OverhangSliceHD = "pkg:/images/Overhang_Background_HD.jpg"
+	theme.OverhangSliceSD = "pkg:/images/Overhang_Background_SD.png"
+	theme.OverhangSliceHD = "pkg:/images/Overhang_Background_HD.png"
 	theme.OverhanglogoHD = "pkg:/images/Logo_Overhang_JB_HD.png"
 	theme.OverhanglogoSD = "pkg:/images/Logo_Overhang_JB_SD.png"
 
 	theme.OverhangPrimaryLogoOffsetHD_X = "60"
-	theme.OverhangPrimaryLogoOffsetHD_Y = "40"
+	theme.OverhangPrimaryLogoOffsetHD_Y = "20"
 
-	theme.OverhangPrimaryLogoOffsetSD_X = "60"
-	theme.OverhangPrimaryLogoOffsetSD_Y = "40"
+	theme.OverhangPrimaryLogoOffsetSD_X = "40"
+	theme.OverhangPrimaryLogoOffsetSD_Y = "20"
 
 	backgroundColor = "#E0E0E0"
 	primaryTextColor = "#333333"
@@ -25,9 +25,9 @@ function LoadTheme()
 	tertiaryTextColor = "#999999"
 
 	theme.backgroundColor = ValidStr( backgroundColor )
-	theme.breadcrumbTextLeft = ValidStr( primaryTextColor )
-	theme.breadcrumbDelimiter = ValidStr( primaryTextColor )
-	theme.breadcrumbTextRight = ValidStr( primaryTextColor )
+	theme.breadcrumbTextLeft = ValidStr( backgroundColor )
+	theme.breadcrumbDelimiter = ValidStr( backgroundColor )
+	theme.breadcrumbTextRight = ValidStr( backgroundColor )
 
 	theme.posterScreenLine1Text = ValidStr( primaryTextColor )
 	theme.posterScreenLine2Text = ValidStr( secondaryTextColor )
@@ -108,8 +108,8 @@ function GetLiveStream()
 		title:			"Live Stream"
 		shortDescriptionLine1:	"Live Stream"
 		shortDescriptionLine2:	"Watch Jupiter Broadcasting Live!"
-		sdPosterURL:		"pkg:/images/mm_icon_focus_sd.jpg"
-		hdPosterURL:		"pkg:/images/mm_icon_focus_hd.jpg"
+		sdPosterURL:		"pkg:/images/mm_icon_focus_sd.png"
+		hdPosterURL:		"pkg:/images/mm_icon_focus_hd.png"
 		contentType:		"episode"
 		streamurls:		["http://videocdn-us.geocdn.scaleengine.net/jblive-iphone/live/jblive.stream/playlist.m3u8"]
 		streamformat:		"hls"
