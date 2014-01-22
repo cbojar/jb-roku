@@ -1,16 +1,12 @@
 sub Main()
-	LoadTheme()
+	app = CreateObject( "roAppManager" )
+	app.setTheme( LoadTheme() )
 	categories = LoadConfig()
 
-	if categories.Count() > 1
-		ShowPosterScreen( categories )
-	else
-		ShowEpisodeScreen( categories[0] )
-	end if
+	ShowPosterScreen( categories )
 end sub
 
-sub LoadTheme()
-	app = CreateObject( "roAppManager" )
+function LoadTheme()
 	theme = CreateObject( "roAssociativeArray" )
 	theme.OverhangSliceSD = "pkg:/images/Overhang_Background_SD.jpg"
 	theme.OverhangSliceHD = "pkg:/images/Overhang_Background_HD.jpg"
@@ -44,8 +40,8 @@ sub LoadTheme()
 	theme.springboardDirectorLabelColor = ValidStr( tertiaryTextColor )
 	theme.springboardActorColor = ValidStr( tertiaryTextColor )
 
-	app.SetTheme( theme )
-end sub
+	return theme
+end function
 
 function LoadConfig()
 	result = []
