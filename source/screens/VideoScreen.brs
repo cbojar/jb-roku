@@ -24,16 +24,12 @@ Function showVideoScreen(episode As Object)
 	screen.SetMessagePort(port)
 
 	screen.SetContent( episode )
-	screen.SetPositionNotificationPeriod( 3 ) 'Fire isPlaybackPosition every 3 seconds
+	screen.SetPositionNotificationPeriod( 15 )
 	screen.Show()
-
-	'Uncomment his line to dump the contents of the episode to be played
-	'PrintAA(episode)
 
 	while true
 		msg = wait(0, port)
 		if type(msg) = "roVideoScreenEvent" then
-			print "showHomeScreen | msg = "; msg.getMessage() " | index = "; msg.GetIndex()
 			if msg.isScreenClosed()
 				print "Screen closed"
 				exit while
@@ -44,11 +40,11 @@ Function showVideoScreen(episode As Object)
 			else if msg.isButtonPressed()
 				print "Button pressed: "; msg.GetIndex(); " " msg.GetData()
 			else if msg.isPlaybackPosition() then
-		                nowpos = msg.GetIndex()
-		                RegWrite( episode.title, nowpos.toStr() )
+				nowpos = msg.GetIndex()
+				RegWrite( episode.title, nowpos.toStr() )
 				print "Marked progress: "; msg.GetIndex()
 			else if msg.isFullResult() then
-		                RegDelete( episode.title )
+				RegDelete( episode.title )
 			else
 				print "Unexpected event type: "; msg.GetType()
 			end if
