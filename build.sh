@@ -14,7 +14,8 @@ while true; do
 	case "$1" in
 		-h|--help)
 			echo "Usage: $0 [-d|--debug] [-p|--preserve-temp]"
-			shift;;
+			shift
+			exit;;
 		-d|--debug)
 			DEBUG=1
 			shift;;
