@@ -4,6 +4,7 @@ function CreateSpringboardScreen(episodes, selectedEpisodeIndex)
 	instance.screen = CreateObject("roSpringboardScreen")
 	instance.messagePort = CreateObject("roMessagePort")
 	instance.screen.SetMessagePort(instance.messagePort)
+	instance.watchedStatusTracker = WatchedStatusTracker()
 	instance.lastMessage = invalid
 	instance.screen.SetStaticRatingEnabled(false)
 
@@ -66,7 +67,7 @@ function CreateSpringboardScreen(episodes, selectedEpisodeIndex)
 
 	instance.isPartiallyWatched = function()
 		episode = m.getSelectedEpisode()
-		return RegRead(episode.title) <> invalid and RegRead(episode.title).ToInt() >= 30
+		return m.watchedStatusTracker.hasProgress(episode.title)
 	end function
 
 	instance.waitForInput = function()
@@ -97,11 +98,12 @@ function CreateSpringboardScreen(episodes, selectedEpisodeIndex)
 		msg = m.getLastMessage()
 		episode = m.getSelectedEpisode()
 		if msg.GetIndex() = 1
-			PlayStart = RegRead(episode.title)
-			if PlayStart <> invalid then
-				episode.PlayStart = PlayStart.ToInt()
+			PlayStart = m.watchedStatusTracker.getProgress(episode.title)
+			if PlayStart > 0 then
+				episode.PlayStart = PlayStart
 			end if
 		else if msg.GetIndex() = 2
+			m.watchedStatusTracker.removeProgress(episode.title)
 			episode.PlayStart = 0
 		end if
 		ShowVideoScreen(episode)
