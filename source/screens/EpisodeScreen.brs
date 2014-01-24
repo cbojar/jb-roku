@@ -22,7 +22,7 @@ sub ShowEpisodeScreen( show, breadcrumb="" )
 				screen.SetFocusedListItem( selectedEpisode )
 			else if msg.isRemoteKeyPressed()
 				if msg.GetIndex() = 13
-					ShowVideoScreen( content[selectedEpisode] )
+					CreateVideoScreen(content[selectedEpisode]).showScreen()
 				end if
 			end if
 		end if

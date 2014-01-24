@@ -18,7 +18,7 @@ sub ShowPosterScreen( contentList, breadcrumb="Jupiter Broadcasting" )
 			else if msg.isListItemSelected()
 				selectedItem = contentList[msg.Getindex()]
 				if selectedItem.screenTarget = "video"
-					ShowVideoScreen( selectedItem )
+					CreateVideoScreen(selectedItem).showScreen()
 				else if selectedItem.screenTarget = "livestream"
 					CreateLivestreamScreen(selectedItem).showScreen()
 				else if selectedItem.screenTarget = "quality"
@@ -88,7 +88,7 @@ function CreatePosterScreen(contentList, breadcrumb = "Jupiter Broadcasting")
 				else if msg.isListItemSelected()
 					selectedItem = m.contentList[msg.Getindex()]
 					if selectedItem.screenTarget = "video"
-						ShowVideoScreen(selectedItem)
+						CreateVideoScreen(selectedItem).showScreen()
 					else if selectedItem.screenTarget = "livestream"
 						CreateLivestreamScreen(selectedItem).showScreen()
 					else if selectedItem.screenTarget = "quality"

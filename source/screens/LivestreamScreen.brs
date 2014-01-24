@@ -204,7 +204,7 @@ function CreateLivestreamScreen(livestream)
 				else if msg.isButtonPressed()
 					if msg.GetIndex() = 1
 						m.audioStream.Stop()
-						ShowVideoScreen(m.livestream)
+						CreateVideoScreen(m.livestream).showScreen()
 					else if msg.GetIndex() = 2
 						m.audioStream.Play()
 					else if msg.GetIndex() = 3

@@ -106,7 +106,7 @@ function CreateSpringboardScreen(episodes, selectedEpisodeIndex)
 			m.watchedStatusTracker.removeProgress(episode.title)
 			episode.PlayStart = 0
 		end if
-		ShowVideoScreen(episode)
+		CreateVideoScreen(episode).showScreen()
 		m.setButtons()
 		m.screen.Show()
 	end function

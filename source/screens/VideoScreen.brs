@@ -1,37 +1,32 @@
-'**********************************************************
-' Video Player Example Application - Video Playback 
-' November 2009
-' Copyright (c) 2009 Roku Inc. All Rights Reserved.
-'**********************************************************
+function CreateVideoScreen(episode as Object)
+	instance = CreateObject("roAssociativeArray")
 
-'***********************************************************
-' Create and show the video screen.  The video screen is
-' a special full screen video playback component.  It 
-' handles most of the keypresses automatically and our
-' job is primarily to make sure it has the correct data 
-' at startup. We will receive event back on progress and
-' error conditions so it's important to monitor these to
-' understand what's going on, especially in the case of errors
-'***********************************************************  
-Function showVideoScreen(episode As Object)
-	if type(episode) <> "roAssociativeArray" then
-		print "invalid data passed to showVideoScreen"
-		return -1
-	endif
+	instance.screen = CreateObject("roVideoScreen")
+	instance.messagePort = CreateObject("roMessagePort")
+	instance.screen.setMessagePort(instance.messagePort)
+	instance.watchedStatusTracker = WatchedStatusTracker()
 
-	port = CreateObject("roMessagePort")
-	screen = CreateObject("roVideoScreen")
-	screen.SetMessagePort(port)
+	instance.episode = episode
 
-	screen.SetContent( episode )
-	screen.SetPositionNotificationPeriod( 15 )
-	screen.Show()
+	instance.showScreen = function()
+		m.setTimedEventInterval(15)
+		m.showEpisode()
+		m.waitForInput()
+	end function
 
-	while true
-		msg = wait(0, port)
-		if type(msg) = "roVideoScreenEvent" then
+	instance.setTimedEventInterval = function(interval as Integer)
+		m.screen.SetPositionNotificationPeriod(interval)
+	end function
+
+	instance.showEpisode = function()
+		m.screen.SetContent(m.episode)
+		m.screen.Show()
+	end function
+
+	instance.waitForInput = function()
+		while true
+			msg = wait(0, m.messagePort)
 			if msg.isScreenClosed()
-				print "Screen closed"
 				exit while
 			else if msg.isRequestFailed()
 				print "Video request failure: "; msg.GetIndex(); " " msg.GetData() 
@@ -39,17 +34,22 @@ Function showVideoScreen(episode As Object)
 				print "Video status: "; msg.GetIndex(); " " msg.GetData() 
 			else if msg.isButtonPressed()
 				print "Button pressed: "; msg.GetIndex(); " " msg.GetData()
-			else if msg.isPlaybackPosition() then
-				nowpos = msg.GetIndex()
-				RegWrite( episode.title, nowpos.toStr() )
+			else if msg.isPlaybackPosition() and m.episode.live <> true then
+				m.updateSavePoint(msg.GetIndex())
 				print "Marked progress: "; msg.GetIndex()
 			else if msg.isFullResult() then
-				RegDelete( episode.title )
-			else
-				print "Unexpected event type: "; msg.GetType()
+				m.removeSavePoint()
 			end if
-		else
-			print "Unexpected message class: "; type(msg)
-		end if
-	end while
-End Function
+		end while
+	end function
+
+	instance.updateSavePoint = function(currentPosition)
+		m.watchedStatusTracker.saveProgress(m.episode.title, currentPosition)
+	end function
+
+	instance.removeSavePoint = function()
+		m.watchedStatusTracker.saveProgress(m.episode.title)
+	end function
+
+	return instance
+end function
