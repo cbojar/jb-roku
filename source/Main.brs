@@ -3,7 +3,7 @@ sub Main()
 	app.setTheme( LoadTheme() )
 	categories = LoadConfig()
 
-	ShowPosterScreen( categories )
+	CreatePosterScreen(categories).showScreen()
 end sub
 
 function LoadTheme()
