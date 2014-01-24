@@ -5,9 +5,7 @@ sub ShowEpisodeScreen( show, breadcrumb="" )
 	screen.SetBreadcrumbText( "", breadcrumb )
 	screen.Show()
 
-	mrss = NWM_MRSS( show.url )
-	content = mrss.GetEpisodes()
-	dialogSeen = false
+	content = MRSS(show.url).GetEpisodes()
 	selectedEpisode = 0
 	screen.SetContentList( content )
 	screen.Show()
