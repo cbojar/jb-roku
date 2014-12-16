@@ -111,7 +111,7 @@ function GetLiveStream()
 		sdPosterURL:		"pkg:/images/mm_icon_focus_sd.png"
 		hdPosterURL:		"pkg:/images/mm_icon_focus_hd.png"
 		contentType:		"episode"
-		streamurls:		["http://videocdn-us.geocdn.scaleengine.net/jblive-iphone/live/jblive.stream/playlist.m3u8"]
+		streamurls:		["http://jblive.videocdn.scaleengine.net/jb-live/play/jblive.stream/playlist.m3u8"]
 		streamformat:		"hls"
 		streamqualities:	["SD"]
 		streambitrates:	[0]
