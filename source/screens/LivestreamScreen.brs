@@ -71,6 +71,10 @@ function CreateLivestreamScreen(livestream)
 			return "Calendar could not be loaded."
 		end if
 
+		if calendar.getChildElements() = invalid
+			return "No upcoming events found."
+		end if
+
 		nextEvent = m.getNextEvent(calendar)
 		isLive = m.isEventLive(nextEvent)
 		desc = m.getEventDescription(nextEvent, isLive)
