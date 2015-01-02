@@ -2,7 +2,8 @@ Just imagine sitting back on your couch, turning on your flat-screen, and watchi
 
 Installing
 ==========
-This channel is currently in beta stage, and thus still a private channel. To use the channel, you can add it to your Roku by clicking the following link: [https://owner.roku.com/add/JBTV][roku-add]. You can also sign in to your Roku account and add the channel with the private code JBTV If you run into any problems or have any feature suggestions, feel free to drop us a note here.
+This channel is in the Roku Channel Store. To use the channel, you can add it to your Roku by finding it in the Channel Store, or by clicking the following link: [https://owner.roku.com/add/JBTV][roku-add]. You can also sign in to your Roku account and add the channel with the private code JBTV. If you run into any problems or have any feature suggestions, feel free to drop us a note here.
+
 
 Contributing
 ============
