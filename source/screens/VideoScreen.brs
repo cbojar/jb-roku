@@ -48,7 +48,7 @@ function CreateVideoScreen(episode as Object)
 	end function
 
 	instance.removeSavePoint = function()
-		m.watchedStatusTracker.saveProgress(m.episode.title)
+		m.watchedStatusTracker.removeProgress(m.episode.title)
 	end function
 
 	return instance
